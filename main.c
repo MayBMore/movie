@@ -22,6 +22,13 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
+	FILE *p_file = fopen("movie.dat", "r");
+	printf("Reading the data files...\n"); //데이터 파일을 읽는 중... 
+	if(NULL != p_file) {
+		printf("Read done! %d items are read.\n\n" ) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
+	} else {
+		printf("Error!!\n"); //파일 열기에 실패한 경우
+	}
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
@@ -113,3 +120,7 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
+
+/* 할 일
+1. 파일을 열었을 때 몇 개의 영화 목록이 있는지 어떻게 출력할까
+*/ 
