@@ -34,14 +34,19 @@ int main(int argc, char *argv[]) {
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( /* read name, country, runtime and score*/ )
-	{	
+	while ( EOF != fgets(name, sizeof(name), country, sizeof(country), runTime, sizeof(runTime), score, sizeof(score)) )
+	{	printf("------------------------------\n");
+		printf("Name : %s (%s)\n", name, country); 
+		printf("running time : %d, score : %6f", runTime, score);
+		printf("------------------------------\n");
+		
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}
 
 	//1.4 FILE close
-	
+	fcolse(p_file); //∆ƒ¿œ¿ª ¥›¿Ω
+	 
 	//2. program start
 	while(exit_flag == 0) 
 	{
