@@ -22,9 +22,9 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	FILE *p_file = fopen("movie.dat", "r");
+	fp = fopen("movie.dat", "r");
 	printf("Reading the data files...\n"); //데이터 파일을 읽는 중... 
-	if(NULL != p_file) {
+	if(NULL != fp) {
 		printf("Read done! %d items are read.\n\n" ) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
 	} else {
 		printf("Error!!\n"); //파일 열기에 실패한 경우
@@ -34,15 +34,15 @@ int main(int argc, char *argv[]) {
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( /* read name, country, runtime and score*/ )
+	while (ndPtr != NULL) /* read name, country, runtime and score*/ //이게 맞나? 
 	{
-		
+		mv_genMvInfo(name, score, runTime, country);
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}
 
 	//1.4 FILE close
-	fcolse(p_file); //파일을 닫음
+	fcolse(fp); //파일을 닫음
 	 
 	//2. program start
 	while(exit_flag == 0) 
@@ -60,14 +60,16 @@ int main(int argc, char *argv[]) {
 		scanf("%d", &option); //사용자가 선택한 숫자를 option에 저장 
 			 
 		switch(option)
-		{
+		{ 
 			case 1: //print all the movies
 				printf("printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while (/* repeat until the ndPtr points to the end node */)
+				while ( ndPtr != NULL ) /* repeat until the ndPtr points to the end node */ //ndPtr로 할까 list로 할까 
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
+					mv_print(list);
+					list_getNextNd(list);
 					//ndPtr = the next node of the ndPtr;
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
