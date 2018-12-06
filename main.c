@@ -71,6 +71,7 @@ int main(int argc, char *argv[]) {
 					mv_print(list);
 					list_getNextNd(list);
 					//ndPtr = the next node of the ndPtr;
+					
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
 				}
