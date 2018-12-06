@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
 		printf("3. search for specific runtime movies\n"); //3. 특정 런타임보다 큰 영화 정보만 출력
 		pritnf("4. search for specific score movies\n"); //4. 특정 평점보다 큰 영화 정보만 출력
 		printf("5. exit\n"); //종료 
-		printf("--------------------------------------------\n"); //줄
+		printf("--------------------------------------------\n\n"); //줄
 		
 		printf("--select an option : "); //옵션선택
 		scanf("%d", &option); //사용자가 선택한 숫자를 option에 저장 
