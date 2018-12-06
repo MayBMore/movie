@@ -34,11 +34,8 @@ int main(int argc, char *argv[]) {
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( EOF != fgets(name, sizeof(name), country, sizeof(country), runTime, sizeof(runTime), score, sizeof(score)) )
-	{	printf("------------------------------\n");
-		printf("Name : %s (%s)\n", name, country); 
-		printf("running time : %d, score : %6f", runTime, score);
-		printf("------------------------------\n");
+	while ( /* read name, country, runtime and score*/ )
+	{
 		
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
@@ -51,7 +48,17 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
+		printf("--------------------Menu--------------------\n"); //메뉴 줄 
+		printf("1. print all the movies\n"); //1. 저장된 모든 영화 정보에 대해 출력 
+		printf("2. search for specific country movies\n"); //2. 특정 국가에서 제작된 영화 정보만 출력 
+		printf("3. search for specific runtime movies\n"); //3. 특정 런타임보다 큰 영화 정보만 출력
+		pritnf("4. search for specific score movies\n"); //4. 특정 평점보다 큰 영화 정보만 출력
+		printf("5. exit\n"); //종료 
+		printf("--------------------------------------------\n"); //줄
 		
+		printf("--select an option : "); //옵션선택
+		scanf("%d", &option); //사용자가 선택한 숫자를 option에 저장 
+			 
 		switch(option)
 		{
 			case 1: //print all the movies
@@ -128,4 +135,5 @@ int main(int argc, char *argv[]) {
 
 /* 할 일
 1. 파일을 열었을 때 몇 개의 영화 목록이 있는지 어떻게 출력할까
+2. while문 어떻게 하지...ㅎ 
 */ 
