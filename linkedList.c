@@ -77,6 +77,13 @@ int updateIndex(node_t* ndPtr)
 	            2. initialize the members of the nodes
 	            3. return the generated node (this is the header node, which can be the list itself)
 */
+/*
+	처음 리스트를 만들 때 사용하는 함수 (반드시 사용)
+	리스트 다룰 때 사용
+	1. node 만들기 (메모리 할당)
+	2. node에 멤버 초기설정
+	3. 만든 node로 되돌리기 
+*/
 void* list_genList(void)
 {
 	node_t* ndPtr = genNode(); //make the header node

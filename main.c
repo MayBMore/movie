@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	fp = fopen("movie.dat", "r");
 	printf("Reading the data files...\n"); //데이터 파일을 읽는 중... 
 	if(NULL != fp) {
-		printf("Read done! %d items are read.\n\n" ) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
+		printf("Read done! %i items are read.\n\n" ) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
 	} else {
 		printf("Error!!\n"); //파일 열기에 실패한 경우
 	}
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	//1.4 FILE close
-	fcolse(fp); //파일을 닫음
+	fclose(fp); //파일을 닫음
 	 
 	//2. program start
 	while(exit_flag == 0) 
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 		printf("1. print all the movies\n"); //1. 저장된 모든 영화 정보에 대해 출력 
 		printf("2. search for specific country movies\n"); //2. 특정 국가에서 제작된 영화 정보만 출력 
 		printf("3. search for specific runtime movies\n"); //3. 특정 런타임보다 큰 영화 정보만 출력
-		pritnf("4. search for specific score movies\n"); //4. 특정 평점보다 큰 영화 정보만 출력
+		printf("4. search for specific score movies\n"); //4. 특정 평점보다 큰 영화 정보만 출력
 		printf("5. exit\n"); //종료 
 		printf("--------------------Menu--------------------\n\n"); //줄
 		
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				
 				ndPtr = list;
-					while (/* repeat until the ndPtr points to the end node */)
+					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
 				//2.4.1 get minimal runtime value to search for
 				
 				ndPtr = list;
-					while (/* repeat until the ndPtr points to the end node */)
+					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
 					//2.4.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -112,7 +112,7 @@ int main(int argc, char *argv[]) {
 				//2.5.1 get minimal score value to search for
 				
 				ndPtr = list;
-					while (/* repeat until the ndPtr points to the end node */)
+					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
 					//2.5.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
