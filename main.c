@@ -80,7 +80,16 @@ int main(int argc, char *argv[]) {
 				
 			case 2: //print movies of specific country
 				//2.3.1 get country name to search for
+				printf("select a country : "); //나라 선택을 받기 위해 쓴 글 
+				scanf("%s", country); //나라를 입력받음 
 				
+				char *ndPtr = strstr(list,country); //country에 입력받은 나라를 찾음
+				
+				while (ndPtr != NULL) { //검색된 문자열이 없을 때까지 반복 
+					printf("%s\n", ndPtr); //검색된 문자열 출력
+					ndPtr = strstr(ndPtr+1, country); //country 포인터에 1을 더하여  
+				}
+
 				ndPtr = list;
 					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
