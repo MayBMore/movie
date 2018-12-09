@@ -18,8 +18,7 @@ int main(int argc, char *argv[]) {
 	int option; //user input option
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
 	void *ndPtr; //void pointer for linked list node
-	
-	
+		
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
 	fp = fopen("movie.dat", "r");
