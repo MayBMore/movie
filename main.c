@@ -24,7 +24,8 @@ int main(int argc, char *argv[]) {
 	fp = fopen("movie.dat", "r");
 	printf("Reading the data files...\n"); //데이터 파일을 읽는 중... 
 	if(NULL != fp) {
-		printf("Read done! %i items are read.\n\n" ) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
+		list_len(FILE *fp);
+		printf("Read done! %i items are read.\n\n", *fp) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
 	} else {
 		printf("Error!!\n"); //파일 열기에 실패한 경우
 	}
