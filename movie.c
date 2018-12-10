@@ -14,21 +14,14 @@ typedef struct movInfo{
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	FILE *fp;
-	movInfo_t* mvPtr;
-	
-	mvPtr[10]; //일단은 10개로 정의 나중에 바꾸기
-	int i; //숫자 증가를 위해 변수 선언
-	
-	for (i=0 ; i<10 ; i++) {
-		fscanf(fp, "%s %6f %i %s", &mvPtr[10].name, &mvPtr[10].score, &mvPtr[10].runTime, &mvPtr[10].madeIn);
-	} 
+	movInfo_t* mvPtr; //struct mvPtr
 	
 	return (void*)mvPtr;
 }
 
 void mv_print(void* obj)
 {
-	movInfo_t* mvPtr = (movInfo_t*)obj;
+	movInfo_t* mvPtr = (movInfo_t*)obj; //struct mvPtr = struct *obj 
 	
 	if (mvPtr == NULL)
 	{

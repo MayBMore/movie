@@ -25,7 +25,8 @@ int main(int argc, char *argv[]) {
 	printf("Reading the data files...\n"); //데이터 파일을 읽는 중... 
 	if(NULL != fp) {
 		list = list_genList();
-		list_len(*list);
+		list_len(list);
+		updateIndex(list);
 		printf("Read done! %i items are read.\n\n", &list) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
 	} else {
 		printf("Error!!\n"); //파일 열기에 실패한 경우
@@ -34,7 +35,7 @@ int main(int argc, char *argv[]) {
 	//1.2 list generation (use function list_genList() )
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (ndPtr != NULL) /* read name, country, runtime and score*/ //이게 맞나? 
+	while (fscanf(fp, "%s %6f %i %s", name, score, runTime, country) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
 	{
 		mv_genMvInfo(name, score, runTime, country);
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
