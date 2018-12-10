@@ -75,6 +75,8 @@ int main(int argc, char *argv[]) {
 					
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
+					
+					printf("	- totally %i movies are listed!", ndPtr);
 				}
 				
 				break;
@@ -84,7 +86,7 @@ int main(int argc, char *argv[]) {
 				printf("select a country : "); //나라 선택을 받기 위해 쓴 글 
 				scanf("%s", country); //나라를 입력받음 
 				
-				char *ndPtr = strstr(list,country); //country에 입력받은 나라를 찾음
+				char *ndPtr = strstr(list,country); //country에 입력받은 나라를 찾음 이게 맞나?? 
 				
 				while (ndPtr != NULL) { //검색된 문자열이 없을 때까지 반복 
 					printf("%s\n", ndPtr); //검색된 문자열 출력
@@ -99,12 +101,16 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input country matches to the country of the movie,
 					//then print the contents of the mvInfo
+				
+					printf("	- totally %i movies are listed!", ndPtr);
 				}
 				
 				break;
 				
 			case 3:
 				//2.4.1 get minimal runtime value to search for
+				printf("lowest runtime : "); //런타임을 받기 위해 쓴 글 
+				scanf("%i", runTime);  //런타임을 입력받음 
 				
 				ndPtr = list;
 					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
@@ -114,13 +120,17 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input runtime is lower than the runtime of the movie,
 					//then print the contents of the mvInfo
+					
+					printf("	- totally %i movies are listed!", ndPtr);
 				}
 				
 				break;
 				
 			case 4:
 				//2.5.1 get minimal score value to search for
-				
+				printf("lowest score : "); //평점을 받기 위해 쓴 글
+				scanf("%i", score); //평점을 입력 받음
+				 
 				ndPtr = list;
 					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
@@ -129,6 +139,8 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input score is lower than the score of the movie,
 					//then print the contents of the mvInfo
+					
+					printf("	- totally %i movies are listed!", ndPtr);
 				}
 				break;
 				
