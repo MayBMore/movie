@@ -22,16 +22,13 @@ int main(int argc, char *argv[]) {
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
 	fp = fopen("movie.dat", "r");
-	printf("Reading the data files...\n"); //데이터 파일을 읽는 중... 
-	if(NULL != fp) {
-		list = list_genList();
-		list_len(list);
-		updateIndex(list);
-		printf("Read done! %i items are read.\n\n", &list) ; //파일 열기에 성공한 경우 그런데 몇 개 파일인지 어떻게 알지? 
-	} else {
+	printf("Reading the data files...\n"); //데이터 파일을 읽는 중...
+	 
+	if(NULL == fp) {
 		printf("Error!!\n"); //파일 열기에 실패한 경우
 	}
 	
+	list = list_genList();
 	//1.2 list generation (use function list_genList() )
 	
 	//1.3 read each movie data from the file and add it to the linked list
@@ -44,6 +41,8 @@ int main(int argc, char *argv[]) {
 
 	//1.4 FILE close
 	fclose(fp); //파일을 닫음
+	
+	printf("Read done! %i items are read.\n\n", list_len(list) );
 	 
 	//2. program start
 	while(exit_flag == 0) 
