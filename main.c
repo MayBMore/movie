@@ -72,8 +72,10 @@ int main(int argc, char *argv[]) {
 				while ( ndPtr != NULL ) /* repeat until the ndPtr points to the end node */ //ndPtr로 할까 list로 할까 
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
+					list_getNextNd(mvInfo);
+					list_getNdObj(mvInfo);
 					printf("---------------------------------------------------\n");
-					mv_print(list);
+					mv_print(mvInfo);
 					printf("---------------------------------------------------\n");		
 					list_getNextNd(list);
 					//ndPtr = the next node of the ndPtr;
