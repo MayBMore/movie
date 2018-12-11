@@ -160,4 +160,5 @@ int main(int argc, char *argv[]) {
 /* 할 일
 1. 파일을 열었을 때 몇 개의 영화 목록이 있는지 어떻게 출력할까
 2. while문 어떻게 하지...ㅎ 
+3. mv_genInfo 함수 채우기 
 */ 
