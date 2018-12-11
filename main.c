@@ -32,9 +32,10 @@ int main(int argc, char *argv[]) {
 	//1.2 list generation (use function list_genList() )
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (fscanf(fp, "%s %6f %i %s", name, score, runTime, country) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
+	while (fscanf(fp, "%s %6f %i %s", name, score, runTime, country) == EOF) /* read name, country, runtime and score*/ //이게 맞나? 
 	{
 		mv_genMvInfo(name, score, runTime, country);
+		//fscanf(fp, "%s %6f %i %s", );
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}

@@ -14,8 +14,6 @@ typedef struct movInfo{
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t* mvPtr; //struct mvPtr
-	
-	
 	return (void*)mvPtr;
 }
 
