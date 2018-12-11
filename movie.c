@@ -13,12 +13,8 @@ typedef struct movInfo{
 
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
-	FILE *fp;
 	movInfo_t* mvPtr; //struct mvPtr
 	
-	while (fp != NULL) {
-		fscanf(fp, "%s %6f %i %s", mvPtr->name, mvPtr->score, mvPtr->runTime, mvPtr->madeIn); 
-	}
 	
 	return (void*)mvPtr;
 }
