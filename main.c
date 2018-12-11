@@ -37,7 +37,8 @@ int main(int argc, char *argv[]) {
 		
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		fscanf(fp, "%s %s %6f %i", name, country, &runTime, &score); //scanf받기
-		mvInfo=mv_genMvInfo(name, score, runTime, country); 
+		
+		mvInfo = mv_genMvInfo(name, score, runTime, country); 
 	
 		list_addTail(mvInfo, list);
 	}
@@ -45,7 +46,7 @@ int main(int argc, char *argv[]) {
 	//1.4 FILE close
 	fclose(fp); //파일을 닫음
 	
-	printf("Read done! %i items are read.\n\n", list_len(mvInfo) );
+	printf("Read done! %i items are read.\n\n", list_len(list) );
 	 
 	//2. program start
 	while(exit_flag == 0) 
