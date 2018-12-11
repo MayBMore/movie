@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
 					
-					printf("	- totally %i movies are listed!", list_len(list));
+					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
 				}
 				
 				break;
@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
 					//if the input country matches to the country of the movie,
 					//then print the contents of the mvInfo
 				
-					printf("	- totally %i movies are listed!", list_len(list));
+					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
 				}
 				
 				break;
@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
 					//if the input runtime is lower than the runtime of the movie,
 					//then print the contents of the mvInfo
 					
-					printf("	- totally %i movies are listed!", list_len(list));
+					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
 				}
 				
 				break;
@@ -145,7 +145,7 @@ int main(int argc, char *argv[]) {
 					//if the input score is lower than the score of the movie,
 					//then print the contents of the mvInfo
 					
-					printf("	- totally %i movies are listed!", list_len(list));
+					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
 				}
 				break;
 				
