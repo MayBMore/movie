@@ -13,10 +13,10 @@ typedef struct movInfo{
 
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {	
-	FILE *fp; //파일 포인터 
+	//FILE *fp; //파일 포인터 
 	 
 	movInfo_t* mvPtr; //struct mvPtr
-	fscanf(fp, "%s %6f %i %s", mvPtr->name, mvPtr->score, mvPtr->runTime, mvPtr->madeIn); //scanf받기 
+	//fscanf(fp, "%s %6f %i %s", mvPtr->name, mvPtr->score, mvPtr->runTime, mvPtr->madeIn); //scanf받기 
 	
 	return (void*)mvPtr;
 }

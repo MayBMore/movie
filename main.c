@@ -32,17 +32,20 @@ int main(int argc, char *argv[]) {
 	//1.2 list generation (use function list_genList() )
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (fscanf(fp, "%s %6f %i %s", name, score, runTime, country) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
+	while (fscanf(fp, "%s %6f %i %s", name, &score, &runTime, country) == EOF) /* read name, country, runtime and score*/ //이게 맞나? 
 	{
-		mv_genMvInfo(name, score, runTime, country);
+		
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
+		fscanf(fp, "%s %s %6f %i", name, country, &runTime, &score); //scanf받기
+		mvInfo=mv_genMvInfo(name, score, runTime, country); 
+	
 		list_addTail(mvInfo, list);
 	}
 
 	//1.4 FILE close
 	fclose(fp); //파일을 닫음
 	
-	printf("Read done! %i items are read.\n\n", list_len(list) );
+	printf("Read done! %i items are read.\n\n", list_len(mvInfo) );
 	 
 	//2. program start
 	while(exit_flag == 0) 
@@ -68,7 +71,9 @@ int main(int argc, char *argv[]) {
 				while ( ndPtr != NULL ) /* repeat until the ndPtr points to the end node */ //ndPtr로 할까 list로 할까 
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
+					printf("---------------------------------------------------\n");
 					mv_print(list);
+					printf("---------------------------------------------------\n");		
 					list_getNextNd(list);
 					//ndPtr = the next node of the ndPtr;
 					
