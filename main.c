@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 		printf("2. search for specific country movies\n"); //2. 특정 국가에서 제작된 영화 정보만 출력 
 		printf("3. search for specific runtime movies\n"); //3. 특정 런타임보다 큰 영화 정보만 출력
 		printf("4. search for specific score movies\n"); //4. 특정 평점보다 큰 영화 정보만 출력
-		printf("5. exit\n"); //종료 
+		printf("5. exit\n"); //5. 종료 
 		printf("--------------------Menu--------------------\n\n"); //줄
 		
 		printf("--select an option : "); //옵션선택
@@ -164,7 +164,5 @@ int main(int argc, char *argv[]) {
 }
 
 /* 할 일
-1. 파일을 열었을 때 몇 개의 영화 목록이 있는지 어떻게 출력할까
 2. while문 어떻게 하지...ㅎ 
-3. mv_genInfo 함수 채우기 
 */ 
