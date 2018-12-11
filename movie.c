@@ -17,16 +17,13 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 
 	mvPtr = (movInfo_t*)malloc(sizeof(movInfo_t));
 	
-	if (mvPtr == NULL) {
-		printf("ERROR\n");}
+	if (mvPtr == NULL) {printf("ERROR\n");}
 		
 	strcpy(mvPtr->name, name);
 	mvPtr->score = score;
 	mvPtr->runTime = runTime;
 	strcpy(mvPtr->madeIn, country);
 	
-	//strcpy 
-	//fscanf(fp, "%s %6f %i %s", mvPtr->name, mvPtr->score, mvPtr->runTime, mvPtr->madeIn); //scanf¹Þ±â 
 	return (void*)mvPtr;
 }
 
