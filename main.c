@@ -108,20 +108,6 @@ int main(int argc, char *argv[]) {
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
-					/*
-					//2.2 print a movie data : use functions of movie.c and linkedList.c
-					ndPtr = list_getNextNd(ndPtr);
-					//list_getIndexNd(list_addTail(list, mvInfo), list);
-					mvInfo = list_getNdObj(ndPtr);
-					
-					mv_print(mvInfo);
-					printf("---------------------------------------------------\n");		
-					//list_getNextNd(list);
-					//ndPtr = the next node of the ndPtr;
-					
-					//get object of ndPtr to mvInfo void pointer
-					//print the contents of the mvInfo
-					*/
 					ndPtr = list_getNextNd(ndPtr);
 					mvInfo = list_getNdObj(ndPtr);
 					
@@ -148,7 +134,7 @@ int main(int argc, char *argv[]) {
 			case 3:
 				//2.4.1 get minimal runtime value to search for
 				printf("lowest runtime : "); //런타임을 받기 위해 쓴 글 
-				scanf("%i", runTime);  //런타임을 입력받음 
+				scanf("%i", runTime);  //런타임을 입력받음
 				
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
@@ -158,10 +144,19 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input runtime is lower than the runtime of the movie,
 					//then print the contents of the mvInfo
+					ndPtr = list_getNextNd(ndPtr);
+					mvInfo = list_getNdObj(ndPtr);
 					
-					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
-				}
+					if(runTime >= mv_getRunTime(mvInfo)) {
+						mv_print(mvInfo);
+						printf("---------------------------------------------------\n");
+						count++;
+					}
+					
 				
+				}
+			
+				printf("	- totally %i movies are listed!\n\n\n", count);
 				break;
 				
 			case 4:
@@ -179,8 +174,17 @@ int main(int argc, char *argv[]) {
 					//if the input score is lower than the score of the movie,
 					//then print the contents of the mvInfo
 					
-					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
+					ndPtr = list_getNextNd(ndPtr);
+					mvInfo = list_getNdObj(ndPtr);
+					
+					if(score >= mv_getScore(mvInfo)) {
+						mv_print(mvInfo);
+						printf("---------------------------------------------------\n");
+						count++;
+					
 				}
+				
+				printf("	- totally %i movies are listed!\n\n\n", count);	
 				break;
 				
 			case 5:
@@ -197,6 +201,5 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-/* 할 일
-2. while문 어떻게 하지...ㅎ 
-*/ 
+}
+
