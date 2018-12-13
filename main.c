@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	//1.2 list generation (use function list_genList() )
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (fscanf(fp, "%s %6f %i %s", name, &score, &runTime, country) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
+	while (fscanf(fp, "%s %s %i %6f", name, country, &runTime, &score) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
 	{
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		//scanf받기
@@ -68,17 +68,16 @@ int main(int argc, char *argv[]) {
 				printf("printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while ( list_isEndNode(mvInfo) == 1 ) /* repeat until the ndPtr points to the end node */
+				while ( list_isEndNode(ndPtr) == 0 ) /* repeat until the ndPtr points to the end node */
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
-					list_getNextNd(mvInfo);
-					list_getIndexNd(list_addTail(list, mvInfo), list);
+					ndPtr = list_getNextNd(ndPtr);
+					//list_getIndexNd(list_addTail(list, mvInfo), list);
+					mvInfo = list_getNdObj(ndPtr);
 					
-					//list_getNdObj(mvInfo);
-					printf("---------------------------------------------------\n");
 					mv_print(mvInfo);
 					printf("---------------------------------------------------\n");		
-					list_getNextNd(list);
+					//list_getNextNd(list);
 					//ndPtr = the next node of the ndPtr;
 					
 					//get object of ndPtr to mvInfo void pointer
@@ -105,12 +104,13 @@ int main(int argc, char *argv[]) {
 					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
+					
 					//ndPtr = the next node of the ndPtr;
 					//get object of ndPtr to mvInfo void pointer
 					//if the input country matches to the country of the movie,
 					//then print the contents of the mvInfo
 				
-					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
+					printf("	- totally %i movies are listed!\n\n\n", list_len(list)); //list_len 말고 count 변수 선언해서 ++하 
 				}
 				
 				break;
@@ -143,6 +143,7 @@ int main(int argc, char *argv[]) {
 					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
 				{
 					//2.5.2 print a movie data : use functions of movie.c and linkedList.c
+					
 					//ndPtr = the next node of the ndPtr;
 					//get object of ndPtr to mvInfo void pointer
 					//if the input score is lower than the score of the movie,

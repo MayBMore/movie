@@ -17,7 +17,10 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 
 	mvPtr = (movInfo_t*)malloc(sizeof(movInfo_t));
 	
-	if (mvPtr == NULL) {printf("ERROR\n");}
+	if (mvPtr == NULL) {
+		printf("ERROR\n"); 
+		return;
+	}
 		
 	strcpy(mvPtr->name, name);
 	mvPtr->score = score;
@@ -65,6 +68,7 @@ char* mv_getName(void* obj)
 char* mv_getCountry(void* obj)
 {
 	
+	return mvInfo->madeIn;
 }
 
 
