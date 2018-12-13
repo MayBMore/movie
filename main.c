@@ -69,10 +69,11 @@ int main(int argc, char *argv[]) {
 				printf("printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while ( ndPtr != NULL ) /* repeat until the ndPtr points to the end node */ //ndPtr로 할까 list로 할까 
+				while ( list_isEndNode(mvInfo) == 1 ) /* repeat until the ndPtr points to the end node */ //ndPtr로 할까 list로 할까 
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					list_getNextNd(mvInfo);
+					list_getIndexNd(mvInfo, list);
 					list_getNdObj(mvInfo);
 					printf("---------------------------------------------------\n");
 					mv_print(mvInfo);
@@ -82,9 +83,9 @@ int main(int argc, char *argv[]) {
 					
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
-					
-					printf("	- totally %i movies are listed!\n\n\n", list_len(list));
 				}
+				
+				printf("	- totally %i movies are listed!\n\n\n", list_len(list));
 				
 				break;
 				
