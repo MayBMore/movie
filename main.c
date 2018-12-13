@@ -93,15 +93,20 @@ int main(int argc, char *argv[]) {
 				printf("select a country : "); //나라 선택을 받기 위해 쓴 글 
 				scanf("%s", country); //나라를 입력받음 
 				
+				int count = 0; //라인 줄 세기 
+				 
+				
+				/*
 				char *ndPtr = strstr(list,country); //country에 입력받은 나라를 찾음 이게 맞나?? 
 				
 				while (ndPtr != NULL) { //검색된 문자열이 없을 때까지 반복 
 					printf("%s\n", ndPtr); //검색된 문자열 출력
 					ndPtr = strstr(ndPtr+1, country); //country 포인터에 1을 더하여  
 				}
+				*/
 
 				ndPtr = list;
-					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
+					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
 					
@@ -109,8 +114,10 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input country matches to the country of the movie,
 					//then print the contents of the mvInfo
+					
+					count = count++; //라인 줄 세기 
 				
-					printf("	- totally %i movies are listed!\n\n\n", list_len(list)); //list_len 말고 count 변수 선언해서 ++하 
+					printf("	- totally %i movies are listed!\n\n\n", count); //list_len 말고 count 변수 선언해서 ++하 
 				}
 				
 				break;
@@ -121,7 +128,7 @@ int main(int argc, char *argv[]) {
 				scanf("%i", runTime);  //런타임을 입력받음 
 				
 				ndPtr = list;
-					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
+					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
 					//2.4.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -140,7 +147,7 @@ int main(int argc, char *argv[]) {
 				scanf("%i", score); //평점을 입력 받음
 				 
 				ndPtr = list;
-					while (ndPtr != NULL)/* repeat until the ndPtr points to the end node */
+					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
 					//2.5.2 print a movie data : use functions of movie.c and linkedList.c
 					
