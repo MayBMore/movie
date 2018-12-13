@@ -34,9 +34,8 @@ int main(int argc, char *argv[]) {
 	//1.3 read each movie data from the file and add it to the linked list
 	while (fscanf(fp, "%s %6f %i %s", name, &score, &runTime, country) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
 	{
-		
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		fscanf(fp, "%s %s %6f %i", name, country, &runTime, &score); //scanf받기
+		//scanf받기
 		
 		mvInfo = mv_genMvInfo(name, score, runTime, country); 
 	
@@ -69,12 +68,13 @@ int main(int argc, char *argv[]) {
 				printf("printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while ( list_isEndNode(mvInfo) == 1 ) /* repeat until the ndPtr points to the end node */ //ndPtr로 할까 list로 할까 
+				while ( list_isEndNode(mvInfo) == 1 ) /* repeat until the ndPtr points to the end node */
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					list_getNextNd(mvInfo);
-					list_getIndexNd(mvInfo, list);
-					list_getNdObj(mvInfo);
+					list_getIndexNd(list_addTail(list, mvInfo), list);
+					
+					//list_getNdObj(mvInfo);
 					printf("---------------------------------------------------\n");
 					mv_print(mvInfo);
 					printf("---------------------------------------------------\n");		
