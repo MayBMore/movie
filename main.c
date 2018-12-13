@@ -19,33 +19,31 @@ int main(int argc, char *argv[]) {
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
 	void *ndPtr; //void pointer for linked list node
 		
+	int count = 0; //목록이 얼마나 있는지 세기 위한 변수 선언 
+
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	fp = fopen("movie.dat", "r");
+	fp = fopen("movie.dat", "r"); //movie.dat 파일 열기 
 	printf("Reading the data files...\n"); //데이터 파일을 읽는 중...
 	 
-	if(NULL == fp) {
-		printf("Error!!\n"); //파일 열기에 실패한 경우
+	if(NULL == fp) {  //파일 열기에 실패한 경우
+		printf("Error!!\n");
+		return; 
 	}
 	
-	list = list_genList();
-	//1.2 list generation (use function list_genList() )
+	list = list_genList(); //1.2 list generation (use function list_genList() )
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (fscanf(fp, "%s %s %i %6f", name, country, &runTime, &score) != EOF) /* read name, country, runtime and score*/ //이게 맞나? 
+	while (fscanf(fp, "%s %s %i %6f", name, country, &runTime, &score) != EOF) //name, country, runtime and score를 불러와 읽기 
 	{
-		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		//scanf받기
-		
-		mvInfo = mv_genMvInfo(name, score, runTime, country); 
-	
+		mvInfo = mv_genMvInfo(name, score, runTime, country); //generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}
 
 	//1.4 FILE close
 	fclose(fp); //파일을 닫음
 	
-	printf("Read done! %i items are read.\n\n", list_len(list) );
+	printf("Read done! %i items are read.\n\n", list_len(list) ); //파일을 다 읽고 목록에 몇 개 있는지 출력 
 	 
 	//2. program start
 	while(exit_flag == 0) 
@@ -65,26 +63,20 @@ int main(int argc, char *argv[]) {
 		switch(option)
 		{ 
 			case 1: //print all the movies
-				printf("printing all the movies in the list.....\n\n\n");
+				printf("printing all the movies in the list.....\n\n\n"); //목록의 모든 영화를 출력 중.... 
 				
 				ndPtr = list;
 				while ( list_isEndNode(ndPtr) == 0 ) /* repeat until the ndPtr points to the end node */
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
-					ndPtr = list_getNextNd(ndPtr);
-					//list_getIndexNd(list_addTail(list, mvInfo), list);
-					mvInfo = list_getNdObj(ndPtr);
+					ndPtr = list_getNextNd(ndPtr); //다음 노드 가르키기
+					mvInfo = list_getNdObj(ndPtr); //mvInfo를 노드에서 꺼내기 get object of ndPtr to mvInfo void pointer
 					
-					mv_print(mvInfo);
-					printf("---------------------------------------------------\n");		
-					//list_getNextNd(list);
-					//ndPtr = the next node of the ndPtr;
-					
-					//get object of ndPtr to mvInfo void pointer
-					//print the contents of the mvInfo
+					mv_print(mvInfo); //mvInfo에 저장된 목록 출력하기 print the contents of the mvInfo
+					printf("---------------------------------------------------\n"); //구분선	
 				}
 				
-				printf("	- totally %i movies are listed!\n\n\n", list_len(list));
+				printf("	- totally %i movies are listed!\n\n\n", list_len(list)); //목록에 총 몇 개의 영화 정보가 있는지 출력 
 				
 				break;
 				
@@ -92,44 +84,23 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				printf("select a country : "); //나라 선택을 받기 위해 쓴 글 
 				scanf("%s", country); //나라를 입력받음 
-				int count = 0; //라인 줄 세기 
-			
-				 
-				
-				/*
-				char *ndPtr = strstr(list,country); //country에 입력받은 나라를 찾음 이게 맞나?? 
-				
-				while (ndPtr != NULL) { //검색된 문자열이 없을 때까지 반복 
-					printf("%s\n", ndPtr); //검색된 문자열 출력
-					ndPtr = strstr(ndPtr+1, country); //country 포인터에 1을 더하여  
-				}
-				*/
-
+		
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
-					ndPtr = list_getNextNd(ndPtr);
-					mvInfo = list_getNdObj(ndPtr);
-					
-					if(strcmp(country,mv_getCountry(mvInfo)) == 0) {
-						mv_print(mvInfo);
-						printf("---------------------------------------------------\n");
-						count++;
-					}
-					
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
+					ndPtr = list_getNextNd(ndPtr); //다음 노드 가르키기
+					mvInfo = list_getNdObj(ndPtr); //mvInfo를 노드에서 꺼내기 get object of ndPtr to mvInfo void pointer
 					
-					//ndPtr = the next node of the ndPtr;
-					//get object of ndPtr to mvInfo void pointer
-					//if the input country matches to the country of the movie,
-					//then print the contents of the mvInfo 
-				
-				
-				
+					if(strcmp(country,mv_getCountry(mvInfo)) == 0) { //strcmp함수를 사용해 입력받은 country와 목록에 있는 영화 비교하기 if the input country matches to the country of the movie,
+						mv_print(mvInfo); //then print the contents of the mvInfo
+						printf("---------------------------------------------------\n");
+						count++; //총 몇 개의 영화가 이에 해당되는지 세기 
+					}
 				}
 				
-				printf("	- totally %i movies are listed!\n\n\n", count); //list_len 말고 count 변수 선언해서 ++하 
-				count = 0;
+				printf("	- totally %i movies are listed!\n\n\n", count); //총 몇 개의 영화가 이에 해당되는지 출력하기 
+				count = 0; //count를 다시 0으로 초기화하기 
 				break;
 				
 			case 3:
@@ -141,24 +112,18 @@ int main(int argc, char *argv[]) {
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
 					//2.4.2 print a movie data : use functions of movie.c and linkedList.c
-					//ndPtr = the next node of the ndPtr;
-					//get object of ndPtr to mvInfo void pointer
-					//if the input runtime is lower than the runtime of the movie,
-					//then print the contents of the mvInfo
-					ndPtr = list_getNextNd(ndPtr);
-					mvInfo = list_getNdObj(ndPtr);
+					ndPtr = list_getNextNd(ndPtr); //다음 노드 가르키기
+					mvInfo = list_getNdObj(ndPtr); //mvInfo를 노드에서 꺼내기 get object of ndPtr to mvInfo void pointer
 					
-					if(runTime <= mv_getRunTime(mvInfo)){
-						mv_print(mvInfo);
+					if(runTime <= mv_getRunTime(mvInfo)){ //입력받은 러닝타임보다 긴 영화 목록을 찾음 if the input runtime is lower than the runtime of the movie,
+						mv_print(mvInfo); //출력하기 if the input runtime is lower than the runtime of the movie,
 						printf("---------------------------------------------------\n");
-						count++;
+						count++; //총 몇 개의 영화가 이에 해당되는지 세기 
 					}
-					
-				
 				}
 			
-				printf("	- totally %i movies are listed!\n\n\n", count);
-				count=0;
+				printf("	- totally %i movies are listed!\n\n\n", count); //총 몇 개의 영화가 이에 해당되는지 출력하기 
+				count=0; //count를 다시 0으로 초기화하기 
 				break;
 				
 			case 4:
@@ -167,28 +132,21 @@ int main(int argc, char *argv[]) {
 				scanf("%f", &score); //평점을 입력 받음
 				 
 				ndPtr = list;
-					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
+					while (list_isEndNode(ndPtr) == 0) /* repeat until the ndPtr points to the end node */
 				{
 					//2.5.2 print a movie data : use functions of movie.c and linkedList.c
+					ndPtr = list_getNextNd(ndPtr); //다음 노드 가르키기
+					mvInfo = list_getNdObj(ndPtr); //mvInfo를 노드에서 꺼내기 get object of ndPtr to mvInfo void pointer
 					
-					//ndPtr = the next node of the ndPtr;
-					//get object of ndPtr to mvInfo void pointer
-					//if the input score is lower than the score of the movie,
-					//then print the contents of the mvInfo
-					
-					ndPtr = list_getNextNd(ndPtr);
-					mvInfo = list_getNdObj(ndPtr);
-					
-					if(score <= mv_getScore(mvInfo)){
-						mv_print(mvInfo);
+					if(score <= mv_getScore(mvInfo)){ //입력받은 평점보다 큰 영화를 찾음 if the input score is lower than the score of the movie,
+						mv_print(mvInfo); //출력 then print the contents of the mvInfo
 						printf("---------------------------------------------------\n");
-						count++;
-					
-				    }
+						count++;//총 몇 개의 영화가 이에 해당되는지 세기 
+					}
 			    }
 				
-				printf("	- totally %i movies are listed!\n\n\n", count);	
-				count=0;
+				printf("	- totally %i movies are listed!\n\n\n", count);	//총 몇 개의 영화가 이에 해당되는지 출력하기
+				count=0; //count를 다시 0으로 초기화하기 
 				break;
 				
 			case 5:
@@ -202,7 +160,6 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	return 0;
-
 }
 
 
