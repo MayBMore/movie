@@ -92,8 +92,8 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				printf("select a country : "); //나라 선택을 받기 위해 쓴 글 
 				scanf("%s", country); //나라를 입력받음 
-				
 				int count = 0; //라인 줄 세기 
+			
 				 
 				
 				/*
@@ -129,12 +129,13 @@ int main(int argc, char *argv[]) {
 				}
 				
 				printf("	- totally %i movies are listed!\n\n\n", count); //list_len 말고 count 변수 선언해서 ++하 
+				count = 0;
 				break;
 				
 			case 3:
 				//2.4.1 get minimal runtime value to search for
 				printf("lowest runtime : "); //런타임을 받기 위해 쓴 글 
-				scanf("%i", runTime);  //런타임을 입력받음
+				scanf("%i", &runTime);  //런타임을 입력받음
 				
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
@@ -147,7 +148,7 @@ int main(int argc, char *argv[]) {
 					ndPtr = list_getNextNd(ndPtr);
 					mvInfo = list_getNdObj(ndPtr);
 					
-					if(runTime >= mv_getRunTime(mvInfo)) {
+					if(runTime <= mv_getRunTime(mvInfo)){
 						mv_print(mvInfo);
 						printf("---------------------------------------------------\n");
 						count++;
@@ -157,12 +158,13 @@ int main(int argc, char *argv[]) {
 				}
 			
 				printf("	- totally %i movies are listed!\n\n\n", count);
+				count=0;
 				break;
 				
 			case 4:
 				//2.5.1 get minimal score value to search for
 				printf("lowest score : "); //평점을 받기 위해 쓴 글
-				scanf("%i", score); //평점을 입력 받음
+				scanf("%f", &score); //평점을 입력 받음
 				 
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
@@ -177,14 +179,16 @@ int main(int argc, char *argv[]) {
 					ndPtr = list_getNextNd(ndPtr);
 					mvInfo = list_getNdObj(ndPtr);
 					
-					if(score >= mv_getScore(mvInfo)) {
+					if(score <= mv_getScore(mvInfo)){
 						mv_print(mvInfo);
 						printf("---------------------------------------------------\n");
 						count++;
 					
-				}
+				    }
+			    }
 				
 				printf("	- totally %i movies are listed!\n\n\n", count);	
+				count=0;
 				break;
 				
 			case 5:
@@ -197,9 +201,10 @@ int main(int argc, char *argv[]) {
 				break;
 		}
 	}
-	
 	return 0;
-}
 
 }
+
+
+
 
