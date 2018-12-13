@@ -108,6 +108,30 @@ int main(int argc, char *argv[]) {
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)/* repeat until the ndPtr points to the end node */
 				{
+					/*
+					//2.2 print a movie data : use functions of movie.c and linkedList.c
+					ndPtr = list_getNextNd(ndPtr);
+					//list_getIndexNd(list_addTail(list, mvInfo), list);
+					mvInfo = list_getNdObj(ndPtr);
+					
+					mv_print(mvInfo);
+					printf("---------------------------------------------------\n");		
+					//list_getNextNd(list);
+					//ndPtr = the next node of the ndPtr;
+					
+					//get object of ndPtr to mvInfo void pointer
+					//print the contents of the mvInfo
+					*/
+					ndPtr = list_getNextNd(ndPtr);
+					mv_getCountry(ndPtr);
+					
+					mvInfo = list_getIndexNd(*(char*)country, ndPtr);
+					
+					mv_print(mvInfo);
+					printf("---------------------------------------------------\n");
+					
+					
+					ndPtr = list_getNextNd(ndPtr);
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
 					
 					//ndPtr = the next node of the ndPtr;
